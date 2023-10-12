@@ -16,8 +16,7 @@ function load(){
     for (var i = 0, max = thestart.length; i < max; i++) {
       var div = document.createElement("div");
       div.className = "flex-container";
-      thestart[i].appendChild(div);
-      if (thestart[i].getAttribute("data-file-ext") == 'webm' || thestart[i].getAttribute("data-tags").includes('animated')){
+      if (thestart[i].getAttribute("data-file-ext") == 'webm' || thestart[i].getAttribute("data-tags").search(/\banimated\b/) >= 0){
         if (thestart[i].getAttribute("data-tags").includes('animated')) {var awtype = 'ANIM'}
         if (thestart[i].getAttribute("data-file-ext") == 'webm') {var awtype = 'WEBM'}
         div.innerHTML += `<span class="type-badge ${awtype.toLowerCase()}">${awtype}</span>`;
@@ -27,50 +26,28 @@ function load(){
       if (thestart[i].getAttribute("data-rating") == 's') {var ratingtag = 'SAFE';}
       if (thestart[i].getAttribute("data-rating") == 'q') {var ratingtag = 'QUESTIONABLE';}
       if (thestart[i].getAttribute("data-rating") == 'e') {var ratingtag = 'EXPLICIT';}
-      if (thestart[i].childNodes[2].nodeName == '#text'){
-        thestart[i].childNodes[5].innerHTML += `<span class="rating ${ratingtag.toLowerCase()}">${ratingtag}</span>`;
-      }else{
-        thestart[i].childNodes[2].innerHTML += `<span class="rating ${ratingtag.toLowerCase()}">${ratingtag}</span>`;
-      }
+      div.innerHTML += `<span class="rating ${ratingtag.toLowerCase()}">${ratingtag}</span>`;
     //}
     //for (var i = 0, max = thestart.length; i < max; i++) {
       //var hm = thestart[i].childNodes[0].childNodes[0].childNodes[2]
 
       //console.log(ComputedStyle(hm, ['border-top-color','border-right-color','border-left-color','border-bottom-color']))
       if (thestart[i].className.includes('post-status-flagged')) {
-        if (thestart[i].childNodes[2].nodeName == '#text'){
-          inline(thestart[i].childNodes[5], 'FLAGGED')
-        }else{
-          inline(thestart[i].childNodes[2], 'FLAGGED')
-        }
+        inline(div, 'FLAGGED')
       }
       if (thestart[i].className.includes('post-status-pending')) {
-        if (thestart[i].childNodes[2].nodeName == '#text') {
-          inline(thestart[i].childNodes[5], 'PENDING')
-        }else{
-          inline(thestart[i].childNodes[2], 'PENDING')
-        }
+        inline(div, 'PENDING')
       }
       if (thestart[i].className.includes('post-status-has-parent')) {
-        if (thestart[i].childNodes[2].nodeName == '#text') {
-          inline(thestart[i].childNodes[5], 'HAS-PARENT')
-        }else{
-          inline(thestart[i].childNodes[2], 'HAS-PARENT')
-        }
+        inline(div, 'HAS-PARENT')
       }
       if (thestart[i].className.includes('post-status-has-children')) {
-        if (thestart[i].childNodes[2].nodeName == '#text') {
-          inline(thestart[i].childNodes[5], 'HAS-CHILDREN')
-        }else{
-          inline(thestart[i].childNodes[2], 'HAS-CHILDREN')
-        }
+        inline(div, 'HAS-CHILDREN')
       }
       if (thestart[i].className.includes('post-status-deleted')) {
-        if (thestart[i].childNodes[2].nodeName == '#text') {
-          inline(thestart[i].childNodes[5], 'DELETED')
-        }else{
-          inline(thestart[i].childNodes[2], 'DELETED')}
+        inline(div, 'DELETED')
       }
+      thestart[i].appendChild(div);
     }
   }
   var stylecode1 = `
