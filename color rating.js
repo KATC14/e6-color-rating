@@ -32,21 +32,11 @@ function load(){
       //var hm = thestart[i].childNodes[0].childNodes[0].childNodes[2]
 
       //console.log(ComputedStyle(hm, ['border-top-color','border-right-color','border-left-color','border-bottom-color']))
-      if (thestart[i].className.includes('flagged')) {
-        inline(div, 'FLAGGED')
-      }
-      if (thestart[i].className.includes('pending')) {
-        inline(div, 'PENDING')
-      }
-      if (thestart[i].className.includes('has-parent')) {
-        inline(div, 'HAS-PARENT')
-      }
-      if (thestart[i].className.includes('has-children')) {
-        inline(div, 'HAS-CHILDREN')
-      }
-      if (thestart[i].className.includes('deleted')) {
-        inline(div, 'DELETED')
-      }
+      if (thestart[i].className.includes('flagged')) {      div.innerHTML += inline('FLAGGED') }
+      if (thestart[i].className.includes('pending')) {      div.innerHTML += inline('PENDING') }
+      if (thestart[i].className.includes('has-parent')) {   div.innerHTML += inline('HAS-PARENT') }
+      if (thestart[i].className.includes('has-children')) { div.innerHTML += inline('HAS-CHILDREN') }
+      if (thestart[i].className.includes('deleted')) {      div.innerHTML += inline('DELETED') }
       thestart[i].appendChild(div);
     }
   }
@@ -85,6 +75,4 @@ article.thumbnail[data-tags~='animated'] > a::before {
   addGlobalStyle(stylecode1)
 }
 load()
-function inline(origin, outline){
-  origin.innerHTML += `<span class="mod_outline mod_${outline.toLowerCase()}">${outline}</span>`;
-}
+function inline(outline){ return `<span class="mod_outline mod_${outline.toLowerCase()}">${outline}</span>`; }
