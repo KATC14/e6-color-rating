@@ -68,8 +68,8 @@ function load(){
   font-weight: 700;
   border: 1px solid #fff;
 }
-article.thumbnail[data-file-ext='webm'] > a::before,
-article.thumbnail[data-tags~='animated'] > a::before {
+article.thumbnail[data-file-ext='webm'] > a::after,
+article.thumbnail[data-tags~='animated'] > a::after {
   display:none;
 }`
   addGlobalStyle(stylecode1)
