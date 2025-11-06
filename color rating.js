@@ -37,7 +37,7 @@ function load(){
       if (thestart[i].className.includes('has-parent')) {   div.innerHTML += inline('HAS-PARENT') }
       if (thestart[i].className.includes('has-children')) { div.innerHTML += inline('HAS-CHILDREN') }
       if (thestart[i].className.includes('deleted')) {      div.innerHTML += inline('DELETED') }
-      thestart[i].appendChild(div);
+      thestart[i].childNodes[1].appendChild(div);
     }
   }
   var stylecode1 = `
