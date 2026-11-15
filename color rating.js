@@ -4,6 +4,8 @@
 // @include       https://e621.net/*
 // @include       https://e926.net/*
 // @include       https://e6ai.net/*
+// @include       https://blep.art/*
+// @include       https://floofgens.net/*
 // @version       6.0
 // @author        - KATC14
 // @require       https://raw.githubusercontent.com/KATC14/useful/master/useful_things.js
